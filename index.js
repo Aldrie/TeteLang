@@ -1,7 +1,7 @@
 const express = require('express');
 const app = new express();
 const path = require('path');
-const port = 8080;
+const port = process.env.PORT || 3000;
 
 app.use(express.static('pages'));
 
