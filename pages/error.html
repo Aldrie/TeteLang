@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1{
+            color: rgb(221, 64, 64);
+        }
+        button{
+            padding: .3rem 1rem;
+            font-size: 2rem;
+            border: none;
+            color: #fff;
+            background: #9f58dd;
+            box-shadow: 0 .6rem #5e3384;
+            transition: filter .2s;
+        }
+        button:hover{
+            filter: saturate(.6) brightness(1.2);
+        }
+        button:active{
+            position: relative;
+            box-shadow: none;
+            top: .6rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Tete Lang
+        <a href="/" id="info"><i title="Code" class="icon-code"></i></a>
+    </header>
+    <div class="container">
+        <img src="img/error-gif2.gif" alt="Error">
+        <h1>Oopps...!</h1>
+        <h3>Page Not Found!:(</h3>
+        <br><br><br>
+        <a href="/"><button>Back</button></a>
+    </div>
+      
+</body>
+
+</html>
+
+<script>
+   
+        let img = document.querySelector("img");
+        let ramdom = Math.floor(Math.random() * (2 - 1 + 1))+1;
+        img.src = "img/error-gif"+ ramdom +".gif";
+    
+</script>
