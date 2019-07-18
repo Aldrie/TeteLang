@@ -5,7 +5,7 @@ var editor = CodeMirror.fromTextArea(code, {readOnly : true});
 let themes = document.getElementById('themes');
 let modes = document.getElementById('modes');
 let div_commands = document.querySelector(".con_commands");
-
+let description_div = document.querySelector(".help-description");
 
 commands = {
     VARIAVEL:{
@@ -17,21 +17,21 @@ commands = {
     },
     ENTRADA:{
         nameSV: "ENTRADA",
-        description: "Utilizado para executar uma entrada do usuário",
+        description: "Utilizado para executar uma _entrada_ do usuário",
         exSV: "//Uma Variável que recebe\n// o valor do usuário!\n"+
             "VARIAVEL nome\n"+
             'nome = ENTRADA "Digite seu nome"',
     },
     SAIDA:{
         nameSV: "SAIDA",
-        description: "Executa uma saída no terminal, exibe em forma de texto a requesição",
+        description: "Executa uma _saída_ no terminal, exibe em forma de texto a requesição",
         exSV: "//Uma mensagem será \n//exibida no terminal\n"+
             'SAIDA "Olá Mundo"',
     },
 
     SE:{
         nameSV: "SE",
-        description: "Executa uma comparação, se a resposta for verdadeira é executado o respectivo código",
+        description: "Executa uma _comparação_, se a resposta for verdadeira é executado o respectivo código",
         exSV: "//Comparação entre dois números\n"+
             'SE 2 < 16 SAIDA "2 é menor que 16"\n'+
             'SE 2 > 16 SAIDA "2 é menor que 16"\n'+
@@ -39,11 +39,16 @@ commands = {
     },
     LOOP:{
         nameSV: "LOOP",
-        description: "Utilizado na necessidade de um Loop, enquanto a condição for verdadeira o loop se repetirá",
+        description: "Utilizado na necessidade de um _Loop_, enquanto a _condição_ for verdadeira o loop se repetirá",
         exSV: "//Uma contagem de 0 a 16\n"+
             "VARIAVEL numero\n"+
             "numero = 0\n"+
             'LOOP numero <= 10, numero = numero + 1, SAIDA numero',
+    },
+    Comentário:{
+        nameSV: "Comentário",
+        description: "Quando usado, _não é considerado_ no código, é apenas algo a enfatizar",
+        exSV: "//Basta duas barras no começo\n//da linha e ela\n//será ignorada\n",
     }
 };
 
@@ -61,12 +66,18 @@ function generateFlexBoxCommands(mode){
 }
 }
 
+function generateDescription(text){
+    let final_text;
+    final_text = text.replace(/_(.*?)_/g, '<strong style="text-shadow:0 0 15px #eaeaea;">$1</strong>');
+    return final_text;
+}
 
 let command_btns = document.querySelectorAll(".command");
 for(var i=0; i<=command_btns.length - 1; i++){
     command_btns[i].addEventListener("click", function(){
         if(modes.value == "TLsv"){
         editor.setValue(commands[this.innerHTML].exSV);
+        description_div.innerHTML = generateDescription(commands[this.innerHTML].description);
         }else {
             editor.setValue(TransformSimplerToDefault(commands[this.innerHTML].exSV));
         }

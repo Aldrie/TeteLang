@@ -84,8 +84,8 @@ header a:active {
 
 .themes {
     float: right;
-    margin: .4rem 1.2rem;
     color: #fafafa;
+    max-width: 50%;
 }
 #themes{
     color:#fafafa;
@@ -98,43 +98,10 @@ header a:active {
 }
 .modes {
     float: left;
-    margin: .4rem .3rem;
     color: #fafafa;
-}
-@media only screen and (max-width: 480px){
-    header{
-        font-size: 1.2rem;
-    }
-    .modes {
-        font-size: 10px;
-        margin: -1.2rem .3rem;
-    }
-    #modes{
-        font-size: 10px;
-    }
-    .themes {
-        font-size: 10px;
-    }
-    #themes{
-        font-size: 10px;
-    }
+    max-width: 50%;
 }
 
-@media only screen and (width: 425px){
-    .modes {
-        font-size: 10px;
-        margin: .4rem .3rem;
-    }
-    #modes{
-        font-size: 10px;
-    }
-    .themes {
-        font-size: 10px;
-    }
-    #themes{
-        font-size: 10px;
-    }
-}
 #modes{
     color:#fafafa;
 }
@@ -148,6 +115,10 @@ header a:active {
     background:#6e68ec;
 }
 .textAreaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: .5rem .5rem;
     min-height: 2rem;
     background-image: linear-gradient(to right top, #6e68ec, #9772e2, #b27fd9, #c48fd2, #d0a1ce);
     width:100%;
@@ -396,4 +367,32 @@ header a:active {
     cursor: pointer;
     text-shadow: 0 0 10px #fff;
     box-shadow:0 0 10px #551a8b;
+}
+
+@media screen and (max-width: 450px){
+    .textAreaHeader{
+        font-size: 12px;
+    }
+    #themes, #modes{
+        font-size: 10px;
+    }
+    .themes, .modes{
+       max-width: 10rem;
+    }
+}
+.CodeMirror{
+    width: 100%;
+    height: 15rem;
+}
+
+.help-description{
+    text-align: center;
+    margin-top:0;
+    font-size: 1rem;
+    padding: .3rem 1rem;
+    width: 100%;
+    border: none;
+    color:white;
+    background-image: linear-gradient(to right top, #6e68ec, #9772e2, #b27fd9, #c48fd2, #d0a1ce);
+    transition: all .2s ease-in-out;
 }
