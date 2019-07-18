@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="js/codemirror/theme/dracula.css">
+    <link rel="stylesheet" href="js/codemirror/theme/3024-day.css">
+    <link rel="stylesheet" href="css/icomoon/style.css">
+</head>
+
+<body>
+    <header>
+        <a href="help.html" id="info"><i title="Learn" style="font-size: 3rem;" class="icon-lean"></i></a>
+        Teté Programadora 
+        <a href="#" id="save"><i title="Save" class="icon-save"></i></a>
+        
+    </header>
+    <div class="container">
+
+        <div class="modal" id="modal">
+             <div class="modal-header">
+                 Salvar
+                    <span class="close" id="close_modal">&times;</span>
+                </div>
+
+            <div class="modal-content">
+                <div class="input-modal">
+                <form>
+                    <span>Nome</span>
+                    <input type="text" id="userFileName">
+                    <span>.</span>
+                    <input type="text" id="userFileExt"> 
+                    <div class="buttons">
+                    <input type="reset" value="Limpar">
+                    <br>
+                    <input type="button" id="save_modal" value="Salvar">
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="con_textArea">
+            <div class="con_textAreaTitle">Code</div>
+            <div class="textAreaHeader">
+               
+               <div class="themes">
+                    Tema
+                    <select id="themes">
+                            <option value="light">Light (Claro)</option>
+                            <option value="dark">Dark (Escuro)</option>
+                    </select>
+               </div>
+               <div class="modes">
+                Modo
+                <select id="modes">
+                        <option value="TLsv">TLsv (ultra simples)</option>
+                        <option value="TL">TL (intermediario)</option>
+                        <option value="JS">JS (Avançado)</option>
+                </select>
+           </div>
+            </div>
+           <textarea id="code" class="textarea"></textarea>
+            <div class="con_btn">
+                <button id="btn_run">Run</button>
+            </div>
+        </div>
+        <div class="con_terminal">
+            <div class="con_textTerminal">Terminal</div>
+            <div class="headerTerminal">
+                <div class="terminalBtn1" title="Limpar"></div>
+                <div class="terminalBtn2"></div>
+                <div class="terminalBtn3"></div>
+            </div>
+            <div class="terminal" id='terminal'></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="js/codemirror/lib/codemirror.js"></script>
+<script src="js/codemirror/mode/javascript/javascript.js"></script>
+<script src="js/codemirror/mode/javascript/TeteLangSimpleVMode.js"></script>
+<script src="js/codemirror/addon/edit/closebrackets.js"></script>
+<script src="js/TeteLangSimpleV.js"></script>
+<script src="js/Main.js"></script>
+<script src="js/TeteLang.js"></script>
