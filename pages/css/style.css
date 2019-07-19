@@ -265,12 +265,15 @@ header a:active {
 }
 .modal-header{
     background-image: linear-gradient(to left top, #c344c7, #a957d9, #8967e7, #5f73f1, #007ef6);
-    height: 10%;
+    height: 15%;
     width: 95%;
     margin: 10% auto;
     display: flex;
     padding: 1.2rem;
     color: #fafafa;
+    align-content: center;
+    align-self: center;
+    align-items: center;
     justify-content: space-between;
 }
 .modal-content {
@@ -285,7 +288,7 @@ header a:active {
 .close {
     color: #f33d3d;
     float: right;
-    margin: -1.5rem .2rem;
+    margin: 0 .2rem;
     font-size: 4rem;
     font-weight: bold;
     transition: all .1s ease-out;

@@ -15,7 +15,6 @@ function TransformSimplerToDefault(codeText) {
 
 String.prototype.VerifyCommandExists = function ( command, parentses ){
     let regex = new RegExp('\\b'+command.toUpperCase()+'\\b', "gi");
-    console.log(regex);
     if (this.search(command.toUpperCase()) == -1 ) {
         return this + "";
     }else {

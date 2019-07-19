@@ -17,8 +17,36 @@ let userFileName = document.getElementById("userFileName");
 let userFileExt = document.getElementById("userFileExt");
 
 //style
-Theme('light');
-Mode('TLsv');
+
+if(GetLocalStorage("text") == null){
+
+}else {
+    editor.setValue(GetLocalStorage("text"));
+}
+
+editor.on('change', function(){
+    CreateLocalStorage("text", editor.getValue());
+});
+
+function CreateLocalStorage(name, value){
+    localStorage.setItem(name, value);
+}
+
+function GetLocalStorage(name){
+    return localStorage.getItem(name);
+}
+
+if(GetLocalStorage("mode") == null){
+    Mode("TLsv");
+}else {
+    Mode(GetLocalStorage("mode"));
+}
+
+if(GetLocalStorage("theme") == null){
+    Theme("Light");
+}else {
+    Theme(GetLocalStorage("theme"));
+}
 
 Modal = {
     show: function() {
@@ -68,31 +96,38 @@ document.addEventListener("keydown", function(e){
 
 themes.onchange = function () {
     Theme(themes.value);//for themes to code editor
+    CreateLocalStorage("theme", themes.value);
 }
 
 modes.onchange = function () {
     Mode(modes.value);//for modes to code editor
+    CreateLocalStorage("mode", modes.value);
 }
 
 function Mode(value) {
     if(value == 'TLsv') {
         editor.setOption("mode", "TLsv");
         modes.style.background = '#d0a1ce';
+        modes.value = 'TLsv';
     }else if(value == 'TL'){
         editor.setOption("mode", "javascript");
         modes.style.background = '#b27fd9';
-    }else{
+        modes.value = 'TL';
+    }else if(value == 'JS'){
         editor.setOption("mode", "javascript");
         modes.style.background = '#6e68ec';
+        modes.value = 'JS';
     }
 }
 
 function Theme(value) {
     if(value == 'light') {
         editor.setOption("theme", "3024-day");
+        themes.value = 'light';
         themes.style.background = '#d0a1ce';
     }else {
         editor.setOption("theme", "dracula");
+        themes.value = 'dark';
         themes.style.background = '#6e68ec';
     }
 }
@@ -116,13 +151,13 @@ function Run(codes) {//"Compiler" function, that interprets the code
     }
 }
 
-function Simpler() {
-    
-}
-
 btn_run.onclick = function() {
-   //Run(editor.getValue());
-   Run(TransformSimplerToDefault(editor.getValue()));
+   if(modes.value == "TLsv"){
+    Run(TransformSimplerToDefault(editor.getValue()));
+   }else{
+    Run(editor.getValue());
+   }
+  
 }
 
 function SaveFile(){

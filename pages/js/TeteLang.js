@@ -5,6 +5,10 @@ function saida(text){//for output
     terminal.innerHTML += text;
 }
 
+function Console(text){//for output
+    terminal.innerHTML += text;
+}
+
 function entrada( msg ) {//for inputs
     let value;
     value = window.prompt( msg );

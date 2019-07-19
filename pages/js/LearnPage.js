@@ -33,8 +33,8 @@ commands = {
         nameSV: "SE",
         description: "Executa uma _comparação_, se a resposta for verdadeira é executado o respectivo código",
         exSV: "//Comparação entre dois números\n"+
-            'SE 2 < 16 SAIDA "2 é menor que 16"\n'+
-            'SE 2 > 16 SAIDA "2 é menor que 16"\n'+
+            'SE 2 < 16, SAIDA "2 é menor que 16"\n'+
+            'SE 2 > 16, SAIDA "2 é menor que 16"\n'+
             '//a saída será a primeira comparação'
     },
     LOOP:{
@@ -59,10 +59,6 @@ function generateFlexBoxCommands(mode){
     for(let key in commands){
         div_commands.innerHTML += `<div class="command">${commands[key].nameSV}</div>`
     }
-}else if(mode == "S"){
-    for(let key in commands){
-        div_commands.innerHTML += `<div class="command">${commands[key].nameSV}</div>`
-    }
 }
 }
 
@@ -78,8 +74,14 @@ for(var i=0; i<=command_btns.length - 1; i++){
         if(modes.value == "TLsv"){
         editor.setValue(commands[this.innerHTML].exSV);
         description_div.innerHTML = generateDescription(commands[this.innerHTML].description);
-        }else {
-            editor.setValue(TransformSimplerToDefault(commands[this.innerHTML].exSV));
+        }
+        else if(modes.value =="TL"){
+        editor.setValue(TransformSimplerToDefault(commands[this.innerHTML].exSV));
+        description_div.innerHTML = generateDescription(commands[this.innerHTML].description);
+        }
+        else if(modes.value == "JS"){
+        editor.setValue(TeteToJavaScript(TransformSimplerToDefault(commands[this.innerHTML].exSV)));
+        description_div.innerHTML = generateDescription(commands[this.innerHTML].description);
         }
     });
 }
@@ -103,7 +105,7 @@ function Mode(value) {
     }else if(value == 'TL'){
         editor.setOption("mode", "javascript");
         modes.style.background = '#b27fd9';
-    }else{
+    }else if(value == "JS"){
         editor.setOption("mode", "javascript");
         modes.style.background = '#6e68ec';
     }
