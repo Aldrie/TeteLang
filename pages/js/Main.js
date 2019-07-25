@@ -43,7 +43,7 @@ if(GetLocalStorage("mode") == null){
 }
 
 if(GetLocalStorage("theme") == null){
-    Theme("Light");
+    Theme("light");
 }else {
     Theme(GetLocalStorage("theme"));
 }
